@@ -1,10 +1,10 @@
 # Object Oriented Pipeline for Machine Learning (Classification)
 
-This project is a comprehensive, object-oriented machine learning pipeline designed to automate and streamline the entire process of data analysis, preprocessing, feature engineering, model training, evaluation, and hyperparameter tuning.
+This project is a comprehensive, **Object-Oriented Machine Learning Pipeline** designed to automate and streamline the entire process of data analysis, preprocessing, feature engineering, model training, evaluation, and hyperparameter tuning.
 
 ## See Artifacts -> Logs -> (Any logs.txt) for complete understanding. 
 
-The goal is to provide a flexible, scalable, and reusable framework that fits all of ML classification workloads. With 98% of the coding already handled, this pipeline can be fully controlled via command-line arguments, making it highly efficient and easy to use.
+The goal is to provide a flexible, scalable, and reusable framework that fits all of ML classification workloads. With **98% of the coding already handled, this pipeline can be fully controlled via command-line arguments**, making it highly efficient and easy to use.
 
 This **Automatic OOPs Pipeline** simplifies the work of data scientists and machine learning engineers, enabling them to train, evaluate, and track models efficiently, while also facilitating seamless collaboration and model sharing within teams.
 
