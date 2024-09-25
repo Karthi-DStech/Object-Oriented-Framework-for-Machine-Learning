@@ -2,7 +2,8 @@
 
 
 
-<img width="323" alt="Screenshot 2024-09-25 at 05 10 26" src="https://github.com/user-attachments/assets/d94a5d23-0e7d-4ef8-af28-5c11f0b33a05">
+<img width="908" alt="Screenshot 2024-09-25 at 05 15 57" src="https://github.com/user-attachments/assets/2869d99a-7100-4f76-af14-af11f0f58956">
+
 
 
 ## Project Structure
