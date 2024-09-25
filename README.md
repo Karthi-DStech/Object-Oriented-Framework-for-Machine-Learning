@@ -8,9 +8,14 @@
 
 ## Project Structure
 
-- **`artifacts/`**: The **artifacts** folder is the central location where all project outputs, including logs and trained models, are stored.
-    - `logs`: This folder stores all the log files generated during model training and evaluation. Each log file is named based on the model name and the date it was created. 
-    - `models`: This folder contains all the trained models. Each model is saved with a filename that includes the model name and the date it was created.
+- **`artifacts/`**:
+The **artifacts** folder is the central location where all project outputs, including logs and trained models, are stored.
+
+    - `logs`:
+      This folder stores all the log files generated during model training and evaluation. Each log file is named based on the model name and the date it was created.
+      
+    - `models`:
+      This folder contains all the trained models. Each model is saved with a filename that includes the model name and the date it was created.
  
 - **`feature_analysis/`**: The **feature_analysis** folder contains scripts used to analyze the relationships and dependencies between features in the dataset
     - **`calculate_chisquare.py`**: This script calculates chi-square scores for categorical features in the dataset. The class **Chi2_Calculation** takes in input data, the processed target variable, and configuration options to compute chi-square values or p-values based on the settings. It helps in determining the dependency of features on the target variable.
@@ -26,5 +31,45 @@
     - **`SHAP.py`**: This script calculates SHAP (SHapley Additive exPlanations) values to evaluate the contribution of each feature to the model's output. The **CalculateSHAPValues** class computes SHAP values and provides insights such as ranked feature importance, specific sample analysis and mean absolute SHAP values.
  
 - **`launch/`**: The **launch** folder contains scripts used to initiate the options for machine learning models with specified configurations.
-    - **`train.sh`**:  This bash script is used to launch the training process by running the `train.py` script with specified arguments for running the pipeline. {There is no necessary to change the Base_Options and Train_Options for changing the arguments. Instead, parse the arguments in this shell script and run it}.
+    - **`train.sh`**:  This bash script is used to launch the training process by running the `train.py` script with specified arguments for running the pipeline. **{There is no necessary to change the Base_Options and Train_Options for changing the arguments. Instead, parse the arguments in this shell script and run it}**.
+ 
+
+- **`models/`**:
+The `models/` folder contains the implementations of various machine learning models used in the project. Each script corresponds to a different algorithm, providing a clear structure for training and evaluation.
+    
+    - **`adaptive_boost.py`**:  
+      This script implements the Adaptive Boosting (AdaBoost) algorithm, which combines weak learners (e.g., decision trees) to create a strong classifier by iteratively adjusting the weights of incorrectly classified instances.
+    
+    - **`base_model.py`**:  
+      This script provides a base class for machine learning models, defining common methods for model training, evaluation, and hyperparameter tuning. It serves as a foundation for other model implementations and all the models will inherit the BaseModel class for using the functionality. 
+    
+    - **`cat_boost.py`**:  
+      Implements the CatBoost algorithm, which is a gradient boosting decision tree algorithm tailored to handle categorical features more efficiently without requiring explicit pre-processing.
+    
+    - **`decision_tree.py`**:  
+      This script implements the Decision Tree Classifier, a non-parametric supervised learning method used for classification and regression. It builds a tree-like model of decisions based on feature values.
+    
+    - **`gradient_boost.py`**:  
+      Implements the Gradient Boosting algorithm, which builds an ensemble of weak prediction models (like decision trees) by optimizing the loss function.
+    
+    - **`knn.py`**:  
+      This script implements the K-Nearest Neighbors (KNN) algorithm, a simple, instance-based learning method used for classification and regression by finding the nearest neighbors of a query point.
+    
+    - **`light_gbm.py`**:  
+      Implements the LightGBM (Light Gradient Boosting Machine) algorithm, which is designed for fast training speed and low memory usage, especially suited for large datasets.
+    
+    - **`logistic_regression.py`**:  
+      This script implements the Logistic Regression algorithm, a statistical model used for binary classification that predicts the probability of a categorical outcome.
+    
+    - **`model_wrapper.py`**:  
+      This script defines a `ModelWrapper` class that serves as a wrapper for machine learning models, allowing them to be seamlessly integrated into scikit-learn pipelines. It extends the functionality of the `BaseEstimator` and `ClassifierMixin` classes from scikit-learn, providing a consistent interface for fitting, predicting, and accessing model parameters.
+    
+    - **`random_forest.py`**:  
+      Implements the Random Forest algorithm, an ensemble method that builds multiple decision trees and merges them to obtain a more accurate and stable prediction.
+    
+    - **`svm.py`**:  
+      This script implements the Support Vector Machine (SVM) algorithm, which is used for both classification and regression tasks by finding a hyperplane that best divides a dataset into classes.
+    
+    - **`xgboost.py`**:  
+      Implements the XGBoost algorithm, a scalable and efficient implementation of gradient boosting that is optimized for speed and performance in large datasets.
  
