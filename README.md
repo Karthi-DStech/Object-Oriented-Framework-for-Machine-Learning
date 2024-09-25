@@ -1,9 +1,34 @@
 # Object Oriented Pipeline for Machine Learning (Classification)
 
+This project is a comprehensive, object-oriented machine-learning pipeline designed to streamline the entire process of data analysis, preprocessing, feature engineering, model training, evaluation, and hyperparameter tuning.
 
+## See Artifacts -> Logs -> (Any logged Model) for better understanding. 
+
+The goal is to provide a flexible, scalable, and reusable framework that fits a wide range of ML classification workloads. With 97% of the coding already handled, this pipeline can be fully controlled via command-line arguments, making it highly efficient and easy to use.
+
+This OOP-based pipeline simplifies the work of data scientists and machine learning engineers, enabling them to train, evaluate, and track models efficiently, while also facilitating seamless collaboration and model sharing within teams.
 
 <img width="908" alt="Screenshot 2024-09-25 at 05 15 57" src="https://github.com/user-attachments/assets/2869d99a-7100-4f76-af14-af11f0f58956">
 
+
+## Key Features
+
+**"An all-in-one machine learning pipeline that allows you to control the entire machine learning process using Python command-line arguments, requiring minimal coding (97% coding-free) and no need for new implementations."**
+
+- **Automated Data Preprocessing**: Includes handling missing values, feature encoding, and customizable feature engineering.
+- **Model Agnostic**: Supports a wide range of classification algorithms such as Logistic Regression, K-Nearest Neighbors, Decision Trees, Random Forests, and boosting models like XGBoost, LightGBM, and CatBoost.
+- **Hyperparameter Tuning**: Uses Optuna for hyperparameter optimization, allowing models to achieve their best performance.
+- **Feature Importance & Analysis**: Includes methods for calculating chi-square scores, correlation analysis, sequential feature selection, model-based feature selection and SHAP Values. 
+- **Logging and Model Saving**: Provides comprehensive logging of model training and evaluation, with the ability to save models and logs for future reference.
+
+## Technologies Used
+
+- **Python**: Core language for the project.
+- **scikit-learn**: For implementing machine learning models and data transformations.
+- **Optuna**: For hyperparameter tuning.
+- **pandas, NumPy**: For data manipulation and analysis.
+- **SHAP**: For calculating feature importance.
+- **Logging**: Custom logging system for tracking model performance and data processing steps.
 
 
 ## Project Structure
