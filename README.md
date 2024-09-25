@@ -1,4 +1,4 @@
-# Object Oriented Pipeline for Machine Learning (Classification)
+# Object Oriented Pipeline for Machine Learning
 
 This project is a comprehensive, **Object-Oriented Machine Learning Pipeline** designed to automate and streamline the entire process of data analysis, preprocessing, feature engineering, model training, evaluation, and hyperparameter tuning.
 
