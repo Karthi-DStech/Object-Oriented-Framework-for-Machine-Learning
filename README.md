@@ -2,58 +2,6 @@
 
 
 
- - `make_network(network_name, *args, **kwargs)`: This function imports and returns the appropriate model class based on the specified `network_name`. Supported models include Logistic Regression, KNN, SVM, Decision Tree, Random Forest, and various boosting models.
-
-   
-├── analysis
-├── artifacts
-│   ├── logs
-│   └── models
-├── feature_analysis
-│   ├── calculate_chisquare.py
-│   └── calculate_correlation.py
-├── feature_engineering
-│   ├── feature_engg_call_methods.py
-│   └── feature_engineering_combined.py
-├── feature_importance
-│   ├── calculate_model_fs.py
-│   ├── calculate_sfs.py
-│   └── SHAP.py
-├── launch
-│   └── train.sh
-├── models
-│   ├── adaptive_boost.py
-│   ├── base_model.py
-│   ├── cat_boost.py
-│   ├── decision_tree.py
-│   ├── gradient_boost.py
-│   ├── knn.py
-│   ├── light_gbm.py
-│   ├── logistic_regression.py
-│   ├── model_wrapper.py
-│   ├── random_forest.py
-│   ├── svm.py
-│   └── xgboost.py
-├── options
-│   ├── base_options.py
-│   └── train_options.py
-├── package_requirements
-│   └── requirements.txt
-├── parameters
-│   └── hyperparameters.py
-├── process
-│   ├── preprocessing.py
-│   └── train_test_split.py
-├── utils
-│   ├── logs.py
-│   ├── save_utils.py
-│   ├── call_methods.py
-└── call_methods.py
-└── train.py
-
-  
-      - `make_params(param_name, *args, **kwargs)`: This function imports and returns the hyperparameters for the specified `param_name`, facilitating easy tuning for models such as Logistic Regression, KNN, SVM, Decision Tree, and various boosting models.
-
 
 
 ## Project Structure
@@ -178,10 +126,10 @@ The **models** folder contains the implementations of various machine learning m
 - **`call_methods.py/`**:
 This script defines functions to dynamically create models and retrieve hyperparameters based on the model name. Key functionalities include:
 
-      - `make_network(network_name, *args, **kwargs)`: This function imports and returns the appropriate model class based on the specified `network_name`. Supported models include Logistic Regression, KNN, SVM, Decision Tree, Random Forest, and various boosting models.
-  
-      - `make_params(param_name, *args, **kwargs)`: This function imports and returns the hyperparameters for the specified `param_name`, facilitating easy tuning for models such as Logistic Regression, KNN, SVM, Decision Tree, and various boosting models.
-
+    - `make_network(network_name, *args, **kwargs)`: This function imports and returns the appropriate model class based on the specified `network_name`.
+      
+    - `make_params(param_name, *args, **kwargs)`: This function imports and returns the hyperparameters for the specified `param_name`, facilitating easy tuning for models.
+      
 - **`train.py/`**:
  The **train.py** script orchestrates the entire machine learning pipeline, from data preprocessing to model training, tuning, evaluation, and saving the results. 
 
