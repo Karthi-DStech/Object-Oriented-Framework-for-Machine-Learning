@@ -1,6 +1,6 @@
 # Object Oriented Pipeline for Machine Learning
 
-This project is a comprehensive, **Object-Oriented Machine Learning Pipeline** designed to automate and streamline the entire process of data analysis, preprocessing, feature engineering, model training, evaluation, and hyperparameter tuning.
+This project is a comprehensive, **Object-Oriented Machine Learning Pipeline** designed to **automate and streamline the entire process of data analysis, preprocessing, feature engineering, model training, evaluation, hyperparameter tuning and feature importance**.
 
 ## See Artifacts -> Logs -> (Any logs.txt) for complete understanding. 
 
