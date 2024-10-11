@@ -1,0 +1,423 @@
+==========================================================================================
+          Predicting the Stage of Liver Cirrhosis LOG REPORT          
+==========================================================================================
+
+Log created at: 2024-10-10 05:04:14
+
+Model Utilised for the Experiment: KNeighborsClassifier
+
+==========================================================================================
+DATA LOADING:
+
+
+  Data loaded: True
+
+
+  Total samples: 418
+
+
+  Total features: 20
+
+
+  Missing values: Yes
+
+
+  Dataframe info: <class 'pandas.core.frame.DataFrame'>
+RangeIndex: 418 entries, 0 to 417
+Data columns (total 20 columns):
+ #   Column         Non-Null Count  Dtype  
+---  ------         --------------  -----  
+ 0   ID             418 non-null    int64  
+ 1   N_Days         418 non-null    int64  
+ 2   Status         418 non-null    object 
+ 3   Drug           312 non-null    object 
+ 4   Age            418 non-null    int64  
+ 5   Sex            418 non-null    object 
+ 6   Ascites        312 non-null    object 
+ 7   Hepatomegaly   312 non-null    object 
+ 8   Spiders        312 non-null    object 
+ 9   Edema          418 non-null    object 
+ 10  Bilirubin      418 non-null    float64
+ 11  Cholesterol    284 non-null    float64
+ 12  Albumin        418 non-null    float64
+ 13  Copper         310 non-null    float64
+ 14  Alk_Phos       312 non-null    float64
+ 15  SGOT           312 non-null    float64
+ 16  Tryglicerides  282 non-null    float64
+ 17  Platelets      407 non-null    float64
+ 18  Prothrombin    416 non-null    float64
+ 19  Stage          412 non-null    float64
+dtypes: float64(10), int64(3), object(7)
+memory usage: 65.4+ KB
+
+
+--------------------------------------------------------------------------------
+DATA PROCESSING:
+
+
+  Missing values:
+
+    ID: 0
+    N_Days: 0
+    Status: 0
+    Drug: 106
+    Age: 0
+    Sex: 0
+    Ascites: 106
+    Hepatomegaly: 106
+    Spiders: 106
+    Edema: 0
+    Bilirubin: 0
+    Cholesterol: 134
+    Albumin: 0
+    Copper: 108
+    Alk_Phos: 106
+    SGOT: 106
+    Tryglicerides: 136
+    Platelets: 11
+    Prothrombin: 2
+    Stage: 6
+
+
+  Categorical columns: ['Status', 'Drug', 'Sex', 'Ascites', 'Hepatomegaly', 'Spiders', 'Edema']
+
+
+  Numeric columns: ['ID', 'N_Days', 'Age', 'Bilirubin', 'Cholesterol', 'Albumin', 'Copper', 'Alk_Phos', 'SGOT', 'Tryglicerides', 'Platelets', 'Prothrombin', 'Stage']
+
+
+  Other columns: None
+
+
+  Imputation method type: imputation_dictionary
+
+
+  Imputation methods:
+
+    Drug: fillna
+    Ascites: fillna
+    Hepatomegaly: fillna
+    Spiders: fillna
+    Cholesterol: mean
+    Albumin: mean
+    Copper: mean
+    Alk_Phos: mean
+    SGOT: mean
+    Tryglicerides: mean
+    Platelets: mean
+    Prothrombin: mean
+    Stage: mode
+
+
+  Feature engineering: No feature engineering performed or required...
+
+
+  Encoded columns:
+
+    label_encoded: ['Sex', 'Edema', 'Status']
+    one_hot_encoded: ['Drug', 'Hepatomegaly', 'Spiders', 'Ascites']
+
+
+  Dropped columns: ['Age', 'ID']
+
+
+  Final number of columns: 22
+
+
+  Final columns: Index(['N_Days', 'Status', 'Sex', 'Edema', 'Bilirubin', 'Cholesterol',
+       'Albumin', 'Copper', 'Alk_Phos', 'SGOT', 'Tryglicerides', 'Platelets',
+       'Prothrombin', 'Stage', 'Drug_Placebo', 'Drug_Unknown',
+       'Hepatomegaly_Unknown', 'Hepatomegaly_Y', 'Spiders_Unknown',
+       'Spiders_Y', 'Ascites_Unknown', 'Ascites_Y'],
+      dtype='object')
+
+--------------------------------------------------------------------------------
+CORRELATION ANALYSIS:
+
+
+  Status: Calculating correlation matrix
+
+
+  Strong positive threshold: 0.7
+
+
+  Strong positive correlations: [
+    {
+        "Feature1": "Drug_Unknown",
+        "Feature2": "Hepatomegaly_Unknown",
+        "Correlation": 1.0,
+        "abs_correlation": 1.0
+    }
+]
+
+
+  Highly correlation threshold: 0.8
+
+
+  Highly correlated features: [
+    {
+        "Feature1": "Drug_Unknown",
+        "Feature2": "Hepatomegaly_Unknown",
+        "Correlation": 1.0,
+        "abs_correlation": 1.0
+    }
+]
+
+
+  Top 10 most correlated pairs: 
++-----+--------------+----------------------+---------------+-------------------+
+|     | Feature1     | Feature2             |   Correlation |   abs_correlation |
++=====+==============+======================+===============+===================+
+| 346 | Drug_Unknown | Hepatomegaly_Unknown |      1        |          1        |
++-----+--------------+----------------------+---------------+-------------------+
+|  87 | Edema        | Ascites_Y            |      0.55208  |          0.55208  |
++-----+--------------+----------------------+---------------+-------------------+
+| 347 | Drug_Unknown | Hepatomegaly_Y       |     -0.459014 |          0.459014 |
++-----+--------------+----------------------+---------------+-------------------+
+| 323 | Drug_Placebo | Drug_Unknown         |     -0.445178 |          0.445178 |
++-----+--------------+----------------------+---------------+-------------------+
+|   6 | N_Days       | Albumin              |      0.430829 |          0.430829 |
++-----+--------------+----------------------+---------------+-------------------+
+|  26 | Status       | Bilirubin            |      0.429722 |          0.429722 |
++-----+--------------+----------------------+---------------+-------------------+
+|   1 | N_Days       | Status               |     -0.416651 |          0.416651 |
++-----+--------------+----------------------+---------------+-------------------+
+|  95 | Bilirubin    | Copper               |      0.405228 |          0.405228 |
++-----+--------------+----------------------+---------------+-------------------+
+|   4 | N_Days       | Bilirubin            |     -0.403953 |          0.403953 |
++-----+--------------+----------------------+---------------+-------------------+
+|  97 | Bilirubin    | SGOT                 |      0.392107 |          0.392107 |
++-----+--------------+----------------------+---------------+-------------------+
+
+--------------------------------------------------------------------------------
+CHI SQUARE SCORES:
+
+
+  Status: Chi2 scores calculation started
+
+
+  Values utilised: chi2_values
+
+
+  Chi2 values info: Higher the value, more dependent the feature is on the target.
+
+
+  Chi square categorical columns: ['Status', 'Drug', 'Sex', 'Ascites', 'Hepatomegaly', 'Spiders', 'Edema']
+
+
+  Chi2 scores:
+
+    Status: 458.88472622478196
+    Drug: 1.0858148970011756
+    Sex: 5.24162936388945
+    Ascites: 14.230986751522071
+    Hepatomegaly: 26.427416070636504
+    Spiders: 13.358092492215281
+    Edema: 50.5894485665328
+
+--------------------------------------------------------------------------------
+TRAIN TEST SPLIT:
+
+
+  Target column: Status
+
+
+  Test size: 0.3
+
+
+  Train size: 292
+
+
+  Test size count: 126
+
+
+  Scaling: StandardScaler
+
+
+  Checks: All checks passed successfully
+
+--------------------------------------------------------------------------------
+MODEL TRAINING:
+
+
+  Model name: KNeighborsClassifier
+
+
+  Training started: 2024-10-10 05:04:14
+
+
+  Training completed: 2024-10-10 05:04:14
+
+
+  Training duration: 0.00 seconds
+
+
+  Status: completed
+
+--------------------------------------------------------------------------------
+MODEL EVALUATION:
+
+
+  Accuracy: 0.746031746031746
+
+
+  Classification report:               precision    recall  f1-score   support
+
+           0       0.76      0.92      0.83        72
+           1       0.00      0.00      0.00         8
+           2       0.76      0.61      0.67        46
+
+    accuracy                           0.75       126
+   macro avg       0.51      0.51      0.50       126
+weighted avg       0.71      0.75      0.72       126
+
+
+--------------------------------------------------------------------------------
+MODEL TUNING:
+
+
+  Tuning started: 2024-10-10 05:04:14
+
+
+  Method: Optuna for hyperparameter tuning
+
+
+  N trials: 100
+
+
+  Best hyperparameters:
+
+    n_neighbors: 14
+    weights: distance
+    algorithm: auto
+    leaf_size: 10
+    p: 1
+
+
+  Tuning completed: 2024-10-10 05:04:16
+
+
+  Tuning duration: 1.14 seconds
+
+
+  Status: completed
+
+--------------------------------------------------------------------------------
+MODEL TUNING EVALUATION:
+
+
+  Accuracy: 0.746031746031746
+
+
+  Classification report:               precision    recall  f1-score   support
+
+           0       0.72      0.94      0.82        72
+           1       0.00      0.00      0.00         8
+           2       0.81      0.57      0.67        46
+
+    accuracy                           0.75       126
+   macro avg       0.51      0.50      0.50       126
+weighted avg       0.71      0.75      0.71       126
+
+
+--------------------------------------------------------------------------------
+MODEL PERFORMANCE ANALYSIS & SAVING:
+
+
+  Evaluation before tuning:
+
+    accuracy: 74.60%
+    precision: 50.51%
+    recall: 50.85%
+    f1: 50.16%
+
+
+  Evaluation after tuning:
+
+    accuracy: 74.60%
+    precision: 51.20%
+    recall: 50.32%
+    f1: 49.53%
+
+
+  Model path: /Users/karthik/My-Github-Repos/ml-indus/artifacts/models/KNeighborsClassifier_2024-10-10_05-04-16_model.pkl
+
+--------------------------------------------------------------------------------
+SHAP:
+
+
+  Status: SHAP values are supported or configured only for tree-based models
+
+--------------------------------------------------------------------------------
+SFS BEFORE TUNING:
+
+
+  Status: Started
+
+
+  Method of sfs: best
+
+
+  Verbose: 1
+
+
+  Scoring: accuracy
+
+
+  Cross validation: 5
+
+
+  Number of features selected: 7
+
+
+  Sfs feature importance table: 
++---+--------------+--------------------+
+|   |   Feature    |  Importance Score  |
++---+--------------+--------------------+
+| 0 |    N_Days    | 0.7639392168322618 |
+| 1 |     Sex      | 0.7639392168322618 |
+| 2 |  Bilirubin   | 0.7639392168322618 |
+| 3 | Cholesterol  | 0.7639392168322618 |
+| 4 | Drug_Placebo | 0.7639392168322618 |
+| 5 | Drug_Unknown | 0.7639392168322618 |
+| 6 |  Ascites_Y   | 0.7639392168322618 |
++---+--------------+--------------------+
+
+
+--------------------------------------------------------------------------------
+SFS AFTER TUNING:
+
+
+  Status: Started
+
+
+  Method of sfs: best
+
+
+  Verbose: 1
+
+
+  Scoring: accuracy
+
+
+  Cross validation: 5
+
+
+  Number of features selected: 7
+
+
+  Sfs feature importance table: 
++---+--------------+--------------------+
+|   |   Feature    |  Importance Score  |
++---+--------------+--------------------+
+| 0 |    N_Days    | 0.7639392168322618 |
+| 1 |     Sex      | 0.7639392168322618 |
+| 2 |  Bilirubin   | 0.7639392168322618 |
+| 3 | Cholesterol  | 0.7639392168322618 |
+| 4 | Drug_Placebo | 0.7639392168322618 |
+| 5 | Drug_Unknown | 0.7639392168322618 |
+| 6 |  Ascites_Y   | 0.7639392168322618 |
++---+--------------+--------------------+
+
+
+--------------------------------------------------------------------------------
+================================================================================

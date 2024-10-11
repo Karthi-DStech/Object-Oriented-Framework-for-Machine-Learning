@@ -1,0 +1,479 @@
+==========================================================================================
+          Predicting the Stage of Liver Cirrhosis LOG REPORT          
+==========================================================================================
+
+Log created at: 2024-10-10 05:05:37
+
+Model Utilised for the Experiment: AdaBoostClassifier
+
+==========================================================================================
+DATA LOADING:
+
+
+  Data loaded: True
+
+
+  Total samples: 418
+
+
+  Total features: 20
+
+
+  Missing values: Yes
+
+
+  Dataframe info: <class 'pandas.core.frame.DataFrame'>
+RangeIndex: 418 entries, 0 to 417
+Data columns (total 20 columns):
+ #   Column         Non-Null Count  Dtype  
+---  ------         --------------  -----  
+ 0   ID             418 non-null    int64  
+ 1   N_Days         418 non-null    int64  
+ 2   Status         418 non-null    object 
+ 3   Drug           312 non-null    object 
+ 4   Age            418 non-null    int64  
+ 5   Sex            418 non-null    object 
+ 6   Ascites        312 non-null    object 
+ 7   Hepatomegaly   312 non-null    object 
+ 8   Spiders        312 non-null    object 
+ 9   Edema          418 non-null    object 
+ 10  Bilirubin      418 non-null    float64
+ 11  Cholesterol    284 non-null    float64
+ 12  Albumin        418 non-null    float64
+ 13  Copper         310 non-null    float64
+ 14  Alk_Phos       312 non-null    float64
+ 15  SGOT           312 non-null    float64
+ 16  Tryglicerides  282 non-null    float64
+ 17  Platelets      407 non-null    float64
+ 18  Prothrombin    416 non-null    float64
+ 19  Stage          412 non-null    float64
+dtypes: float64(10), int64(3), object(7)
+memory usage: 65.4+ KB
+
+
+--------------------------------------------------------------------------------
+DATA PROCESSING:
+
+
+  Missing values:
+
+    ID: 0
+    N_Days: 0
+    Status: 0
+    Drug: 106
+    Age: 0
+    Sex: 0
+    Ascites: 106
+    Hepatomegaly: 106
+    Spiders: 106
+    Edema: 0
+    Bilirubin: 0
+    Cholesterol: 134
+    Albumin: 0
+    Copper: 108
+    Alk_Phos: 106
+    SGOT: 106
+    Tryglicerides: 136
+    Platelets: 11
+    Prothrombin: 2
+    Stage: 6
+
+
+  Categorical columns: ['Status', 'Drug', 'Sex', 'Ascites', 'Hepatomegaly', 'Spiders', 'Edema']
+
+
+  Numeric columns: ['ID', 'N_Days', 'Age', 'Bilirubin', 'Cholesterol', 'Albumin', 'Copper', 'Alk_Phos', 'SGOT', 'Tryglicerides', 'Platelets', 'Prothrombin', 'Stage']
+
+
+  Other columns: None
+
+
+  Imputation method type: imputation_dictionary
+
+
+  Imputation methods:
+
+    Drug: fillna
+    Ascites: fillna
+    Hepatomegaly: fillna
+    Spiders: fillna
+    Cholesterol: mean
+    Albumin: mean
+    Copper: mean
+    Alk_Phos: mean
+    SGOT: mean
+    Tryglicerides: mean
+    Platelets: mean
+    Prothrombin: mean
+    Stage: mode
+
+
+  Feature engineering: No feature engineering performed or required...
+
+
+  Encoded columns:
+
+    label_encoded: ['Sex', 'Edema', 'Status']
+    one_hot_encoded: ['Drug', 'Hepatomegaly', 'Spiders', 'Ascites']
+
+
+  Dropped columns: ['Age', 'ID']
+
+
+  Final number of columns: 22
+
+
+  Final columns: Index(['N_Days', 'Status', 'Sex', 'Edema', 'Bilirubin', 'Cholesterol',
+       'Albumin', 'Copper', 'Alk_Phos', 'SGOT', 'Tryglicerides', 'Platelets',
+       'Prothrombin', 'Stage', 'Drug_Placebo', 'Drug_Unknown',
+       'Hepatomegaly_Unknown', 'Hepatomegaly_Y', 'Spiders_Unknown',
+       'Spiders_Y', 'Ascites_Unknown', 'Ascites_Y'],
+      dtype='object')
+
+--------------------------------------------------------------------------------
+CORRELATION ANALYSIS:
+
+
+  Status: Calculating correlation matrix
+
+
+  Strong positive threshold: 0.7
+
+
+  Strong positive correlations: [
+    {
+        "Feature1": "Drug_Unknown",
+        "Feature2": "Hepatomegaly_Unknown",
+        "Correlation": 1.0,
+        "abs_correlation": 1.0
+    }
+]
+
+
+  Highly correlation threshold: 0.8
+
+
+  Highly correlated features: [
+    {
+        "Feature1": "Drug_Unknown",
+        "Feature2": "Hepatomegaly_Unknown",
+        "Correlation": 1.0,
+        "abs_correlation": 1.0
+    }
+]
+
+
+  Top 10 most correlated pairs: 
++-----+--------------+----------------------+---------------+-------------------+
+|     | Feature1     | Feature2             |   Correlation |   abs_correlation |
++=====+==============+======================+===============+===================+
+| 346 | Drug_Unknown | Hepatomegaly_Unknown |      1        |          1        |
++-----+--------------+----------------------+---------------+-------------------+
+|  87 | Edema        | Ascites_Y            |      0.55208  |          0.55208  |
++-----+--------------+----------------------+---------------+-------------------+
+| 347 | Drug_Unknown | Hepatomegaly_Y       |     -0.459014 |          0.459014 |
++-----+--------------+----------------------+---------------+-------------------+
+| 323 | Drug_Placebo | Drug_Unknown         |     -0.445178 |          0.445178 |
++-----+--------------+----------------------+---------------+-------------------+
+|   6 | N_Days       | Albumin              |      0.430829 |          0.430829 |
++-----+--------------+----------------------+---------------+-------------------+
+|  26 | Status       | Bilirubin            |      0.429722 |          0.429722 |
++-----+--------------+----------------------+---------------+-------------------+
+|   1 | N_Days       | Status               |     -0.416651 |          0.416651 |
++-----+--------------+----------------------+---------------+-------------------+
+|  95 | Bilirubin    | Copper               |      0.405228 |          0.405228 |
++-----+--------------+----------------------+---------------+-------------------+
+|   4 | N_Days       | Bilirubin            |     -0.403953 |          0.403953 |
++-----+--------------+----------------------+---------------+-------------------+
+|  97 | Bilirubin    | SGOT                 |      0.392107 |          0.392107 |
++-----+--------------+----------------------+---------------+-------------------+
+
+--------------------------------------------------------------------------------
+CHI SQUARE SCORES:
+
+
+  Status: Chi2 scores calculation started
+
+
+  Values utilised: chi2_values
+
+
+  Chi2 values info: Higher the value, more dependent the feature is on the target.
+
+
+  Chi square categorical columns: ['Status', 'Drug', 'Sex', 'Ascites', 'Hepatomegaly', 'Spiders', 'Edema']
+
+
+  Chi2 scores:
+
+    Status: 458.88472622478196
+    Drug: 1.0858148970011756
+    Sex: 5.24162936388945
+    Ascites: 14.230986751522071
+    Hepatomegaly: 26.427416070636504
+    Spiders: 13.358092492215281
+    Edema: 50.5894485665328
+
+--------------------------------------------------------------------------------
+TRAIN TEST SPLIT:
+
+
+  Target column: Status
+
+
+  Test size: 0.3
+
+
+  Train size: 292
+
+
+  Test size count: 126
+
+
+  Scaling: StandardScaler
+
+
+  Checks: All checks passed successfully
+
+--------------------------------------------------------------------------------
+MODEL TRAINING:
+
+
+  Model name: AdaBoostClassifier
+
+
+  Training started: 2024-10-10 05:05:37
+
+
+  Training completed: 2024-10-10 05:05:37
+
+
+  Training duration: 0.03 seconds
+
+
+  Status: completed
+
+
+  Feature importance calculation status: started
+
+
+  Feature importance technique: Plot Tree Importance
+
+
+  Feature importance calculation: completed
+
+
+  Number of features selected: 8
+
+
+  Feature importance: 
++----+---------------+------------+
+|    |    Feature    | Importance |
++----+---------------+------------+
+| 3  |   Bilirubin   |    0.18    |
+| 6  |    Copper     |    0.16    |
+| 10 |   Platelets   |    0.14    |
+| 11 |  Prothrombin  |    0.1     |
+| 9  | Tryglicerides |    0.1     |
+| 7  |   Alk_Phos    |    0.1     |
+| 0  |    N_Days     |    0.08    |
+| 5  |    Albumin    |    0.04    |
++----+---------------+------------+
+
+
+--------------------------------------------------------------------------------
+MODEL EVALUATION:
+
+
+  Accuracy: 0.6825396825396826
+
+
+  Classification report:               precision    recall  f1-score   support
+
+           0       0.73      0.76      0.75        72
+           1       0.00      0.00      0.00         8
+           2       0.62      0.67      0.65        46
+
+    accuracy                           0.68       126
+   macro avg       0.45      0.48      0.46       126
+weighted avg       0.65      0.68      0.66       126
+
+
+--------------------------------------------------------------------------------
+MODEL TUNING:
+
+
+  Tuning started: 2024-10-10 05:05:37
+
+
+  Method: Optuna for hyperparameter tuning
+
+
+  N trials: 100
+
+
+  Best hyperparameters:
+
+    n_estimators: 76
+    learning_rate: 0.24188737972711383
+    algorithm: SAMME
+
+
+  Tuning completed: 2024-10-10 05:05:43
+
+
+  Tuning duration: 6.32 seconds
+
+
+  Status: completed
+
+
+  Feature importance calculation status: started
+
+
+  Feature importance technique: Plot Tree Importance
+
+
+  Feature importance calculation: completed
+
+
+  Number of features selected: 8
+
+
+  Feature importance: 
++----+-----------------+---------------------+
+|    |     Feature     |     Importance      |
++----+-----------------+---------------------+
+| 10 |    Platelets    | 0.32512955295334156 |
+| 0  |     N_Days      | 0.2606244910935769  |
+| 3  |    Bilirubin    | 0.13668182257628567 |
+| 11 |   Prothrombin   | 0.1157340643543629  |
+| 7  |    Alk_Phos     | 0.08295635329293286 |
+| 6  |     Copper      | 0.07887371572949986 |
+| 13 |  Drug_Placebo   |         0.0         |
+| 19 | Ascites_Unknown |         0.0         |
++----+-----------------+---------------------+
+
+
+--------------------------------------------------------------------------------
+MODEL TUNING EVALUATION:
+
+
+  Accuracy: 0.8174603174603174
+
+
+  Classification report:               precision    recall  f1-score   support
+
+           0       0.82      0.94      0.88        72
+           1       0.00      0.00      0.00         8
+           2       0.81      0.76      0.79        46
+
+    accuracy                           0.82       126
+   macro avg       0.54      0.57      0.55       126
+weighted avg       0.77      0.82      0.79       126
+
+
+--------------------------------------------------------------------------------
+MODEL PERFORMANCE ANALYSIS & SAVING:
+
+
+  Evaluation before tuning:
+
+    accuracy: 68.25%
+    precision: 45.11%
+    recall: 47.93%
+    f1: 46.47%
+
+
+  Evaluation after tuning:
+
+    accuracy: 81.75%
+    precision: 54.44%
+    recall: 56.84%
+    f1: 55.46%
+
+
+  Model path: /Users/karthik/My-Github-Repos/ml-indus/artifacts/models/AdaBoostClassifier_2024-10-10_05-06-04_model.pkl
+
+--------------------------------------------------------------------------------
+SHAP:
+
+
+  Status: SHAP values are supported or configured only for tree-based models
+
+--------------------------------------------------------------------------------
+SFS BEFORE TUNING:
+
+
+  Status: Started
+
+
+  Method of sfs: best
+
+
+  Verbose: 1
+
+
+  Scoring: accuracy
+
+
+  Cross validation: 5
+
+
+  Number of features selected: 8
+
+
+  Sfs feature importance table: 
++---+---------------+--------------------+
+|   |    Feature    |  Importance Score  |
++---+---------------+--------------------+
+| 0 |    N_Days     | 0.7535943892460549 |
+| 1 |      Sex      | 0.7535943892460549 |
+| 2 |     Edema     | 0.7535943892460549 |
+| 3 |   Bilirubin   | 0.7535943892460549 |
+| 4 |    Albumin    | 0.7535943892460549 |
+| 5 |   Alk_Phos    | 0.7535943892460549 |
+| 6 | Tryglicerides | 0.7535943892460549 |
+| 7 |  Prothrombin  | 0.7535943892460549 |
++---+---------------+--------------------+
+
+
+--------------------------------------------------------------------------------
+SFS AFTER TUNING:
+
+
+  Status: Started
+
+
+  Method of sfs: best
+
+
+  Verbose: 1
+
+
+  Scoring: accuracy
+
+
+  Cross validation: 5
+
+
+  Number of features selected: 8
+
+
+  Sfs feature importance table: 
++---+---------------+--------------------+
+|   |    Feature    |  Importance Score  |
++---+---------------+--------------------+
+| 0 |    N_Days     | 0.7535943892460549 |
+| 1 |      Sex      | 0.7535943892460549 |
+| 2 |     Edema     | 0.7535943892460549 |
+| 3 |   Bilirubin   | 0.7535943892460549 |
+| 4 |    Albumin    | 0.7535943892460549 |
+| 5 |   Alk_Phos    | 0.7535943892460549 |
+| 6 | Tryglicerides | 0.7535943892460549 |
+| 7 |  Prothrombin  | 0.7535943892460549 |
++---+---------------+--------------------+
+
+
+--------------------------------------------------------------------------------
+================================================================================
