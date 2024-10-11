@@ -6,7 +6,7 @@ This project is a comprehensive, **Object-Oriented Machine Learning Pipeline** d
 
 The goal is to provide a flexible, scalable, and reusable framework that fits all of ML classification workloads. With **98% of the coding already handled, this pipeline can be fully controlled via command-line arguments**, making it highly efficient and easy to use.
 
-This **Automatic OOPs Pipeline** simplifies the work of data scientists and machine learning engineers, enabling them to train, evaluate, and track models efficiently, while also facilitating seamless collaboration and model sharing within teams.
+This **Automatic OOPs Pipeline** simplifies the work of **data scientists and machine learning engineers, enabling them to train, evaluate, and track models efficiently, while also facilitating seamless collaboration and model sharing within teams**.
 
 <img width="908" alt="Screenshot 2024-09-25 at 05 15 57" src="https://github.com/user-attachments/assets/2869d99a-7100-4f76-af14-af11f0f58956">
 
