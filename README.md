@@ -158,6 +158,15 @@ This script defines functions to dynamically create models and retrieve hyperpar
     - `make_params(param_name, *args, **kwargs)`: This function imports and returns the hyperparameters for the specified `param_name`, facilitating easy tuning for models.
       
 - **`train.py/`**:
- The **train.py** script orchestrates the entire machine learning pipeline, from data preprocessing to model training, tuning, evaluation, and saving the results. 
+ The **train.py** script orchestrates the entire machine learning pipeline, from data preprocessing to model training, tuning, evaluation, and saving the results.
 
+- **`progressive_train.py/`**: 
+
+This script automatically trains all the models available in the pipeline. If you want to train all models at once, run this script, and it will handle the entire process for you, including logging and saving all the trained models.
+
+## Bugs and Improvements
+
+If you encounter any bugs or have suggestions for improvements, feel free to email me at **[karthinottsuk@gmail.com](mailto:karthinottsuk@gmail.com)**.
+
+Your feedback is highly appreciated and will help improve this project!
 
