@@ -1,6 +1,6 @@
-# Object Oriented Pipeline for Machine Learning
+# Object Oriented Framework for Machine Learning
 
-This project is a comprehensive, **Object-Oriented Machine Learning Pipeline** designed to **automate and streamline the entire process of data analysis, preprocessing, feature engineering, model training, evaluation, hyperparameter tuning and feature importance**.
+This project is a comprehensive, **Object-Oriented Machine Learning Framework** designed to **automate and streamline the entire process of data analysis, preprocessing, feature engineering, model training, evaluation, hyperparameter tuning and feature importance**.
 
 ## 🔍 See artifacts -> logs -> (Any logs.txt) for complete understanding.
 
