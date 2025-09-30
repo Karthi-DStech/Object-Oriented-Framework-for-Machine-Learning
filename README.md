@@ -2,7 +2,7 @@
 
 This project is a comprehensive, **Object-Oriented Machine Learning Framework** designed to **automate and streamline the entire process of data analysis, preprocessing, feature engineering, model training, evaluation, hyperparameter tuning and feature importance**.
 
-## 🔍 See artifacts -> logs -> (Any logs.txt) for complete understanding.
+## 🔍 See artifacts -> logs -> (Any logs.txt) for complete understanding on Automatically created Log Report.
 
 The goal is to provide a flexible, scalable, and reusable framework that fits all of ML classification workloads. With **98% of the coding already handled, this pipeline can be fully controlled via command-line arguments**, making it highly efficient and easy to use.
 
