@@ -1,10 +1,10 @@
 # Object Oriented Framework for Machine Learning
 
-This project is a comprehensive, **Object-Oriented Machine Learning Framework** designed to **automate and streamline the entire process of data analysis, preprocessing, feature engineering, model training, evaluation, hyperparameter tuning and feature importance**.
+This project is a comprehensive, **Object-Oriented Machine Learning Framework** designed to **automate and streamline the entire process of data analysis, preprocessing, feature engineering, model training, evaluation, hyperparameter tuning, feature importance and creates <u>Reports as Artifacts Automatically</u>**.
 
-## 🔍 See artifacts -> logs -> (Any logs.txt) for complete understanding on Automatically created Log Report.
+### ✨🎉 See artifacts -> logs -> **👉 [Access Logs Here](https://github.com/Karthi-DStech/Object-Oriented-Framework-for-Machine-Learning/tree/main/artifacts/logs)** for complete understanding on Automatically created Log Report.
 
-The goal is to provide a flexible, scalable, and reusable framework that fits all of ML classification workloads. With **98% of the coding already handled, this pipeline can be fully controlled via command-line arguments**, making it highly efficient and easy to use.
+The goal is to provide a flexible, scalable, and reusable framework that fits all of ML classification workloads. With **98% of the coding already handled, this pipeline can be fully controlled via command-line arguments**, making it highly efficient and
 
 This **Automatic OOPs Pipeline** simplifies the work of **data scientists and machine learning engineers, enabling them to train, evaluate, and track models efficiently, while also facilitating seamless collaboration and model sharing within teams**.
 
